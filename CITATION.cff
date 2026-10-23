@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+title: "Lucivant Orrery: an open-source quantum circuit simulator"
+message: "If you use Lucivant Orrery in your research, please cite it as below."
+type: software
+authors:
+  - name: "Lucivant Technologies Pty Ltd"
+repository-code: "https://github.com/lucivant/lucivant-sim"
+url: "https://lucivant.com/products/orrery"
+license: Apache-2.0
+version: 0.3.0
+keywords: [quantum computing, simulation, OpenQASM, noise, reproducibility]

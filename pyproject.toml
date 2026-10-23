@@ -1,0 +1,55 @@
+[project]
+name = "lucivant-sim"
+version = "0.3.0"
+description = "Lucivant Orrery: an open-source quantum circuit simulator. Reads OpenQASM 2 and 3 directly; exact statevector and density-matrix engines, trajectories for mid-circuit measurement, device-calibration noise and verifiable seeded results."
+readme = "README.md"
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+authors = [{ name = "Lucivant Technologies Pty Ltd", email = "hello@lucivant.com" }]
+keywords = ["quantum", "quantum computing", "simulator", "openqasm", "statevector", "density matrix", "noise", "reproducibility"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers",
+  "Intended Audience :: Education",
+  "Intended Audience :: Science/Research",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Scientific/Engineering :: Physics",
+  "Typing :: Typed",
+]
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.24"]
+
+[project.optional-dependencies]
+qiskit = ["qiskit>=1.3"]
+cirq = ["cirq-core>=1.4"]
+# opt-in accelerators: method="statevector_aer" and method="stabilizer_stim" (lucivant_sim.accel)
+accel = ["qiskit-aer>=0.17", "stim>=1.14"]
+
+[project.urls]
+Homepage = "https://lucivant.com/products/sim"
+Documentation = "https://lucivant.com/docs/lucivant-sim"
+Source = "https://github.com/lucivant/lucivant-sim"
+
+[project.scripts]
+lucivant-sim = "lucivant_sim.cli:main"
+orrery = "lucivant_sim.cli:main"
+
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/lucivant_sim"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["unit: fast, no external services"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
